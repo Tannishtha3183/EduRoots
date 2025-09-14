@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Roadmap</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+    margin: 0; padding: 20px;
+    text-align: center;
+  }
+  h1 { color: #1e3a8a; margin-bottom: 20px; }
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .card {
+    background: #fff;
+    border: 2px solid #c7d2fe;
+    border-radius: 14px;
+    padding: 20px;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .card:hover {
+    transform: translateY(-8px) scale(1.05);
+    border-color: #6366f1;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+  .card img {
+    width: 64px; height: 64px;
+    margin-bottom: 10px;
+  }
+  .card h3 { margin: 0; color: #111827; font-size: 18px; }
+  .card p { margin: 5px 0; color: #6b7280; font-size: 14px; }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  .modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 95%;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 80vh;
+    animation: scaleUp 0.4s ease-in-out;
+  }
+  .modal-content img {
+    width: 80px; display: block; margin: auto;
+  }
+  .modal-content h2 {
+    text-align: center;
+    margin: 10px 0;
+    color: #4f46e5;
+  }
+  .close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ef4444;
+  }
+  ul { padding-left: 20px; }
+  li { margin: 6px 0; }
+
+  .flow-step {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 10px 0;
+    font-weight: 500;
+    position: relative;
+  }
+  .flow-step::after {
+    content: "↓";
+    display: block;
+    margin-top: 4px;
+    color: #4f46e5;
+  }
+  .flow-step:last-child::after { content:""; }
+
+  /* Animations */
+  @keyframes scaleUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Career Roadmap</h1>
+
+<div class="roadmap" id="careerGrid"></div>
+
+<!-- Modal -->
+<div id="popupModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <img id="domainImg" src="">
+    <h2 id="domainTitle"></h2>
+    <p id="domainDesc"></p>
+    <h3>What do they do?</h3>
+    <ul id="domainTasks"></ul>
+    <h3>How to become one?</h3>
+    <div id="domainSteps"></div>
+  </div>
+</div>
+
+<script>
+const careers = {
+  doctor: {
+    title: "Doctor",
+    img: "https://img.icons8.com/color/96/doctor-male.png",
+    desc: "Doctors diagnose illnesses, treat patients, and save lives.",
+    tasks: ["Diagnose and treat patients","Prescribe medicines","Perform surgeries","Promote healthy lifestyle"],
+    steps: ["Finish high school with science","Clear medical entrance exam","Complete MBBS degree","Specialize in a field","Work in hospitals or clinics"]
+  },
+  engineer: {
+    title: "Engineer",
+    img: "https://img.icons8.com/color/96/engineer.png",
+    desc: "Engineers design, build, and improve systems and technology.",
+    tasks: ["Design solutions","Work with technology","Build infrastructure","Solve real-world problems"],
+    steps: ["Study maths and science","Choose engineering branch","Complete B.Tech/B.E.","Do internships","Work in industry or pursue Masters"]
+  },
+  teacher: {
+    title: "Teacher",
+    img: "https://img.icons8.com/color/96/teacher.png",
+    desc: "Teachers educate and inspire students.",
+    tasks: ["Teach subjects","Guide students","Assess learning","Motivate learners"],
+    steps: ["Graduate in subject","Complete B.Ed or teaching degree","Get teaching practice","Pass eligibility tests","Start teaching in schools/colleges"]
+  },
+  artist: {
+    title: "Artist",
+    img: "https://img.icons8.com/color/96/artist.png",
+    desc: "Artists create paintings, music, performances, or digital art.",
+    tasks: ["Create art","Express ideas","Showcase work","Inspire people"],
+    steps: ["Identify your talent","Practice and build portfolio","Join art school","Showcase online","Work as professional artist"]
+  },
+  scientist: {
+    title: "Scientist",
+    img: "https://cdn-icons-png.flaticon.com/512/1995/1995525.png",
+    desc: "Scientists research and discover new knowledge.",
+    tasks: ["Research experiments","Analyze data","Publish findings","Invent new solutions"],
+    steps: ["Study science subjects","Do B.Sc. or related degree","Do M.Sc. and PhD","Work in labs","Publish research"]
+  },
+  chef: {
+    title: "Chef",
+    img: "https://img.icons8.com/color/96/chef-hat.png",
+    desc: "Chefs cook delicious meals in restaurants and hotels.",
+    tasks: ["Cook dishes","Plan menus","Experiment with recipes","Manage kitchens"],
+    steps: ["Learn cooking basics","Join hotel management course","Work in restaurants","Master culinary arts","Become head chef"]
+  },
+  pilot: {
+    title: "Pilot",
+    img: "https://img.icons8.com/color/96/airplane-take-off.png",
+    desc: "Pilots fly airplanes and helicopters safely around the world.",
+    tasks: ["Fly aircraft","Check safety","Navigate routes","Communicate with ATC","Ensure passenger comfort"],
+    steps: ["Study math & science","Join flight school","Get pilot license","Train with instruments","Pass safety tests"]
+  },
+  athlete: {
+    title: "Athlete",
+    img: "https://img.icons8.com/color/96/running.png",
+    desc: "Athletes compete in sports at national and international levels.",
+    tasks: ["Train daily","Maintain fitness","Compete in tournaments","Represent teams"],
+    steps: ["Choose your sport","Get professional coaching","Compete at school/college level","Join clubs or academies","Participate in national/international competitions"]
+  },
+  lawyer: {
+    title: "Lawyer",
+    img: "https://img.icons8.com/color/96/scales.png",
+    desc: "Lawyers represent clients in legal matters and provide advice.",
+    tasks: ["Defend clients","Interpret laws","Present cases in court","Draft legal documents"],
+    steps: ["Graduate in law (LLB)","Pass bar exam","Work under senior lawyer","Specialize in field","Start practice"]
+  },
+  police: {
+    title: "Police Officer",
+    img: "https://img.icons8.com/color/96/policeman-male.png",
+    desc: "Police officers maintain law, order, and public safety.",
+    tasks: ["Patrol areas","Prevent crimes","Investigate cases","Protect citizens"],
+    steps: ["Finish high school","Clear police entrance exam","Complete police training","Join police department","Work on field duties"]
+  },
+  farmer: {
+    title: "Farmer",
+    img: "https://img.icons8.com/color/96/farmer-male.png",
+    desc: "Farmers grow crops and raise animals to feed the world.",
+    tasks: ["Grow crops","Raise animals","Use modern techniques","Supply food"],
+    steps: ["Learn farming basics","Get land or work on farms","Use tools and irrigation","Adopt modern technology","Sell produce"]
+  },
+  businessman: {
+    title: "Businessman",
+    img: "https://img.icons8.com/color/96/businessman.png",
+    desc: "Businessmen manage and grow companies or startups.",
+    tasks: ["Manage teams","Plan strategies","Grow profits","Build partnerships"],
+    steps: ["Learn management basics","Get MBA or start small","Gain market knowledge","Build company","Scale business"]
+  },
+  developer: {
+    title: "Software Developer",
+    img: "https://img.icons8.com/color/96/laptop.png",
+    desc: "Developers write software, apps, and websites.",
+    tasks: ["Write code","Build apps","Fix bugs","Test and deploy projects"],
+    steps: ["Learn programming (Java, Python, JS)","Build small projects","Contribute to open-source","Get internships","Work as developer in IT"]
+  },
+  nurse: {
+    title: "Nurse",
+    img: "https://img.icons8.com/color/96/nurse-female.png",
+    desc: "Nurses provide medical care and support patients.",
+    tasks: ["Assist doctors","Take care of patients","Monitor health","Give medicines"],
+    steps: ["Finish high school with science","Complete B.Sc Nursing","Do practical training","Join hospital","Work as registered nurse"]
+  },
+  designer: {
+    title: "Designer",
+    img: "https://img.icons8.com/color/96/designer.png",
+    desc: "Designers create visuals, fashion, and digital experiences.",
+    tasks: ["Design graphics","Create user interfaces","Work with clients","Innovate trends"],
+    steps: ["Learn design tools","Build portfolio","Take design degree/courses","Work on freelance projects","Join companies as designer"]
+  }
+};
+
+// Auto-generate cards
+const grid = document.getElementById("careerGrid");
+Object.keys(careers).forEach(key=>{
+  const c = careers[key];
+  grid.innerHTML += `
+    <div class="card" onclick="openModal('${key}')">
+      <img src="${c.img}" alt="${c.title}">
+      <h3>${c.title}</h3>
+      <p>${c.desc.split(".")[0]}</p>
+    </div>
+  `;
+});
+
+function openModal(domain){
+  const info = careers[domain];
+  document.getElementById("domainImg").src = info.img;
+  document.getElementById("domainTitle").textContent = info.title;
+  document.getElementById("domainDesc").textContent = info.desc;
+  document.getElementById("domainTasks").innerHTML = info.tasks.map(t=>`<li>${t}</li>`).join("");
+  document.getElementById("domainSteps").innerHTML = info.steps.map(s=>`<div class='flow-step'>${s}</div>`).join("");
+  document.getElementById("popupModal").style.display = "flex";
+}
+function closeModal(){ document.getElementById("popupModal").style.display="none"; }
+</script>
+
+</body>
+</html>

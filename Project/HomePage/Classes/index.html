@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Classes 1–8 — Simple Maths & Science</title>
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
+
+  <!-- styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- jsPDF for worksheets -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="brand">
+        <div class="logo">📚</div>
+        <div>
+          <h1>Classes 1 – 8</h1>
+          <div class="tag">Simple Maths & Science — Easy language • Examples • Worksheets</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <input id="search" type="search" placeholder="Search topic, example or keyword..." />
+        <button id="downloadAll" class="btn-ghost" title="Download worksheets for current class">📄 Download Class Worksheets</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <aside class="sidebar">
+      <div class="section-title">Classes</div>
+      <nav id="classList" class="class-list"></nav>
+
+      <div class="section-title" style="margin-top:18px">Subjects</div>
+      <div class="subject-buttons">
+        <button class="subject-btn active" data-subject="Maths">Maths</button>
+        <button class="subject-btn" data-subject="Science">Science</button>
+      </div>
+
+      <div class="section-title" style="margin-top:18px">Tips</div>
+      <div class="card small">
+        <strong>Quick tips</strong>
+        <ul>
+          <li>Short examples — read & try on paper.</li>
+          <li>Use a pencil and erase mistakes — practice matters.</li>
+          <li>Click “Download Worksheet” for printable practice.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content-area">
+      <div id="contentHeader" class="content-header">
+        <h2 id="activeClassTitle">Class 1 — Maths</h2>
+        <div class="small muted" id="topicCount">0 topics</div>
+      </div>
+
+      <div id="topicGrid" class="topic-grid"></div>
+
+      <div id="noResults" class="card" style="display:none;margin-top:18px">No topics found. Try another search word or clear the search.</div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
