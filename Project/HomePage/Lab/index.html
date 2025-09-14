@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Science Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <h1 class="lab-title">🔬 Virtual Science Lab</h1>
+                <p class="lab-subtitle">Explore, Experiment, and Learn!</p>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <div class="container">
+                <button class="tab-btn active" data-tab="physics">⚡ Physics</button>
+                <button class="tab-btn" data-tab="chemistry">⚗️ Chemistry</button>
+                <button class="tab-btn" data-tab="biology">🧬 Biology</button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content container">
+            <!-- Physics Tab -->
+            <div class="tab-content active" id="physics">
+                <h2 class="category-title">Physics Experiments</h2>
+                <div class="experiments-grid">
+                    <div class="experiment-card" data-experiment="circuits">
+                        <div class="card-icon">⚡</div>
+                        <h3>Electric Circuits</h3>
+                        <p>Build circuits with drag-and-drop components</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="states">
+                        <div class="card-icon">🧊</div>
+                        <h3>States of Matter</h3>
+                        <p>Change temperature to see matter transform</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="motion">
+                        <div class="card-icon">🏈</div>
+                        <h3>Motion & Forces</h3>
+                        <p>Experiment with force and friction</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="gravity">
+                        <div class="card-icon">🪶</div>
+                        <h3>Gravity Drop</h3>
+                        <p>Compare falling objects in air vs vacuum</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="pendulum">
+                        <div class="card-icon">⏱️</div>
+                        <h3>Pendulum Swing</h3>
+                        <p>Explore pendulum physics</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="magnets">
+                        <div class="card-icon">🧲</div>
+                        <h3>Magnet Fun</h3>
+                        <p>Test which objects are magnetic</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="light">
+                        <div class="card-icon">🔦</div>
+                        <h3>Light & Shadows</h3>
+                        <p>Create and explore shadows</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemistry Tab -->
+            <div class="tab-content" id="chemistry">
+                <h2 class="category-title">Chemistry Experiments</h2>
+                <div class="experiments-grid">
+                    <div class="experiment-card" data-experiment="colors">
+                        <div class="card-icon">🎨</div>
+                        <h3>Color Mixing</h3>
+                        <p>Mix primary colors to create new ones</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="volcano">
+                        <div class="card-icon">🌋</div>
+                        <h3>Volcano Eruption</h3>
+                        <p>Create a safe volcanic eruption</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="acidbase">
+                        <div class="card-icon">🧪</div>
+                        <h3>Acid & Base Test</h3>
+                        <p>Test pH with litmus paper</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="reactions">
+                        <div class="card-icon">💨</div>
+                        <h3>Chemical Reactions</h3>
+                        <p>Watch bubbles form from reactions</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="crystals">
+                        <div class="card-icon">💎</div>
+                        <h3>Crystal Growing</h3>
+                        <p>Grow beautiful crystals over time</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="rusting">
+                        <div class="card-icon">🔩</div>
+                        <h3>Rusting Iron</h3>
+                        <p>See how iron rusts in water</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="density">
+                        <div class="card-icon">🏗️</div>
+                        <h3>Density Tower</h3>
+                        <p>Stack liquids by density</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biology Tab -->
+            <div class="tab-content" id="biology">
+                <h2 class="category-title">Biology Experiments</h2>
+                <div class="experiments-grid">
+                    <div class="experiment-card" data-experiment="seed">
+                        <div class="card-icon">🌱</div>
+                        <h3>Seed Growth</h3>
+                        <p>Watch a seed grow into a plant</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="photosynthesis">
+                        <div class="card-icon">🍃</div>
+                        <h3>Photosynthesis</h3>
+                        <p>See how plants make oxygen</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="bodyparts">
+                        <div class="card-icon">🦴</div>
+                        <h3>Body Parts</h3>
+                        <p>Assemble the human body</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="digestion">
+                        <div class="card-icon">🍎</div>
+                        <h3>Digestive System</h3>
+                        <p>Follow food through the body</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="breathing">
+                        <div class="card-icon">🫁</div>
+                        <h3>Respiration</h3>
+                        <p>Learn how lungs work</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="floating">
+                        <div class="card-icon">🍊</div>
+                        <h3>Floating & Sinking</h3>
+                        <p>Test which fruits float</p>
+                    </div>
+                    <div class="experiment-card" data-experiment="butterfly">
+                        <div class="card-icon">🦋</div>
+                        <h3>Butterfly Life Cycle</h3>
+                        <p>Watch metamorphosis stages</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Experiment Modal -->
+        <div class="modal hidden" id="experiment-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">Experiment Title</h2>
+                    <button class="close-btn">×</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Experiment content will be dynamically inserted here -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn--secondary" id="reset-btn">🔄 Reset</button>
+                    <button class="btn btn--outline close-btn">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experiment Templates -->
+        <div class="experiment-templates hidden">
+            <!-- Electric Circuits -->
+            <div id="circuits-template">
+                <div class="circuit-board">
+                    <div class="circuit-workspace">
+                        <div class="drop-zone" id="circuit-area"></div>
+                    </div>
+                    <div class="component-panel">
+                        <h4>Components</h4>
+                        <div class="draggable-item" data-component="battery">🔋 Battery</div>
+                        <div class="draggable-item" data-component="wire">🔌 Wire</div>
+                        <div class="draggable-item" data-component="bulb">💡 Bulb</div>
+                        <div class="draggable-item" data-component="switch">🔘 Switch</div>
+                    </div>
+                </div>
+                <div class="experiment-info">
+                    <p>Drag components to build a circuit. Connect battery, wires, and bulb to make it glow!</p>
+                </div>
+            </div>
+
+            <!-- States of Matter -->
+            <div id="states-template">
+                <div class="states-container">
+                    <div class="temperature-control">
+                        <label>Temperature: <span id="temp-value">20</span>°C</label>
+                        <input type="range" id="temperature-slider" min="-20" max="120" value="20">
+                    </div>
+                    <div class="matter-display">
+                        <div class="molecule-container" id="molecules">
+                            <div class="molecule ice"></div>
+                            <div class="molecule ice"></div>
+                            <div class="molecule ice"></div>
+                            <div class="molecule ice"></div>
+                            <div class="molecule ice"></div>
+                        </div>
+                        <div class="state-label" id="state-label">Liquid Water</div>
+                    </div>
+                </div>
+                <div class="experiment-info">
+                    <p>Adjust temperature to see water change between ice, liquid, and steam!</p>
+                </div>
+            </div>
+
+            <!-- Motion & Forces -->
+            <div id="motion-template">
+                <div class="motion-container">
+                    <div class="force-control">
+                        <label>Force: <span id="force-value">5</span></label>
+                        <input type="range" id="force-slider" min="1" max="10" value="5">
+                    </div>
+                    <div class="surface-control">
+                        <label>Surface:</label>
+                        <select id="surface-select">
+                            <option value="normal">Normal</option>
+                            <option value="ice">Ice (Low Friction)</option>
+                            <option value="sand">Sand (High Friction)</option>
+                        </select>
+                    </div>
+                    <div class="motion-area">
+                        <div class="ball" id="motion-ball">⚽</div>
+                        <div class="distance-marker" id="distance-marker">0m</div>
+                    </div>
+                    <button class="btn btn--primary" id="push-ball">Push Ball</button>
+                </div>
+                <div class="experiment-info">
+                    <p>Change force and surface type, then push the ball to see how far it travels!</p>
+                </div>
+            </div>
+
+            <!-- Light & Shadows -->
+            <div id="light-template">
+                <div class="light-container">
+                    <div class="light-controls">
+                        <button class="btn btn--primary" id="toggle-light">🔦 Turn On Light</button>
+                        <div class="light-settings">
+                            <label>Light Intensity: <span id="intensity-value">50</span>%</label>
+                            <input type="range" id="intensity-slider" min="10" max="100" value="50">
+                        </div>
+                    </div>
+                    <div class="shadow-area">
+                        <div class="light-source" id="light-source">🔦</div>
+                        <div class="shadow-objects">
+                            <div class="shadow-object" data-shape="cube" style="background: #e74c3c;">📦</div>
+                            <div class="shadow-object" data-shape="sphere" style="background: #3498db;">⚪</div>
+                            <div class="shadow-object" data-shape="cylinder" style="background: #2ecc71;">🟢</div>
+                        </div>
+                        <div class="shadow-wall" id="shadow-wall"></div>
+                        <div class="light-beam hidden" id="light-beam"></div>
+                    </div>
+                </div>
+                <div class="experiment-info">
+                    <p>Turn on the light and drag objects to see their shadows on the wall!</p>
+                </div>
+            </div>
+
+            <!-- Color Mixing -->
+            <div id="colors-template">
+                <div class="color-mixing-container">
+                    <div class="color-droppers">
+                        <div class="dropper red" data-color="red">🔴 Red</div>
+                        <div class="dropper blue" data-color="blue">🔵 Blue</div>
+                        <div class="dropper yellow" data-color="yellow">🟡 Yellow</div>
+                    </div>
+                    <div class="mixing-beaker" id="color-beaker">
+                        <div class="beaker-content" id="beaker-mix"></div>
+                    </div>
+                    <div class="color-result" id="color-result"></div>
+                    <button class="btn btn--secondary" id="clear-beaker">Clear</button>
+                </div>
+                <div class="experiment-info">
+                    <p>Click the color droppers to add primary colors to the beaker and create new colors!</p>
+                </div>
+            </div>
+
+            <!-- Volcano Eruption -->
+            <div id="volcano-template">
+                <div class="volcano-container">
+                    <div class="volcano-model">
+                        <div class="volcano-base">🌋</div>
+                        <div class="lava-flow hidden" id="lava-flow"></div>
+                    </div>
+                    <div class="ingredients">
+                        <div class="ingredient" data-ingredient="baking-soda">🥄 Baking Soda</div>
+                        <div class="ingredient" data-ingredient="vinegar">🍯 Vinegar</div>
+                    </div>
+                    <div class="volcano-status" id="volcano-status">Add ingredients to create eruption!</div>
+                    <button class="btn btn--primary" id="erupt-btn" disabled>🌋 Erupt!</button>
+                </div>
+                <div class="experiment-info">
+                    <p>Add baking soda and vinegar to create a safe volcanic eruption!</p>
+                </div>
+            </div>
+
+            <!-- Acid & Base Test -->
+            <div id="acidbase-template">
+                <div class="acidbase-container">
+                    <div class="test-solutions">
+                        <div class="solution-bottle" data-solution="lemon" data-ph="2">🍋 Lemon Juice (Acid)</div>
+                        <div class="solution-bottle" data-solution="water" data-ph="7">💧 Pure Water (Neutral)</div>
+                        <div class="solution-bottle" data-solution="soap" data-ph="10">🧼 Soap Water (Base)</div>
+                    </div>
+                    <div class="litmus-papers">
+                        <div class="litmus-paper" data-paper="1"></div>
+                        <div class="litmus-paper" data-paper="2"></div>
+                        <div class="litmus-paper" data-paper="3"></div>
+                    </div>
+                    <div class="ph-scale">
+                        <div class="ph-indicator" id="ph-indicator">pH Scale: 0 (Acid) ← 7 (Neutral) → 14 (Base)</div>
+                    </div>
+                    <div class="test-result" id="acidbase-result">Drag solutions to litmus paper to test pH!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Test different solutions with litmus paper to see if they're acidic, neutral, or basic!</p>
+                </div>
+            </div>
+
+            <!-- Chemical Reactions -->
+            <div id="reactions-template">
+                <div class="reactions-container">
+                    <div class="reaction-setup">
+                        <div class="chemical-bottles">
+                            <div class="chemical-bottle" data-chemical="peroxide">🧴 H₂O₂ (Hydrogen Peroxide)</div>
+                            <div class="chemical-bottle" data-chemical="yeast">🍞 Yeast</div>
+                        </div>
+                        <div class="test-tube" id="reaction-tube">
+                            <div class="tube-contents" id="tube-contents"></div>
+                            <div class="bubbles-container" id="bubbles-container"></div>
+                        </div>
+                        <button class="btn btn--primary" id="start-reaction" disabled>Start Reaction!</button>
+                    </div>
+                    <div class="reaction-equation" id="reaction-equation">2H₂O₂ → 2H₂O + O₂ (oxygen bubbles!)</div>
+                    <div class="reaction-status" id="reaction-status">Add both chemicals to the test tube!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Mix hydrogen peroxide and yeast to see a bubbly chemical reaction!</p>
+                </div>
+            </div>
+
+            <!-- Crystal Growing -->
+            <div id="crystals-template">
+                <div class="crystals-container">
+                    <div class="crystal-setup">
+                        <div class="solution-container">
+                            <div class="salt-water">🧂💧 Salt Water Solution</div>
+                            <div class="temperature-control">
+                                <label>Temperature: <span id="crystal-temp">25</span>°C</label>
+                                <input type="range" id="crystal-temp-slider" min="15" max="45" value="25">
+                            </div>
+                        </div>
+                        <div class="crystal-dish">
+                            <div class="crystal-growth" id="crystal-growth"></div>
+                        </div>
+                        <div class="time-controls">
+                            <label>Time (hours): <span id="crystal-time">0</span></label>
+                            <input type="range" id="crystal-time-slider" min="0" max="72" value="0">
+                            <button class="btn btn--primary" id="start-crystallization">Start Growing Crystals</button>
+                        </div>
+                    </div>
+                    <div class="crystal-info" id="crystal-info">Set up your salt water solution and watch crystals grow!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Adjust temperature and time to grow beautiful salt crystals!</p>
+                </div>
+            </div>
+
+            <!-- Rusting Iron -->
+            <div id="rusting-template">
+                <div class="rusting-container">
+                    <div class="nail-containers">
+                        <div class="nail-setup">
+                            <h4>Nail in Water</h4>
+                            <div class="water-container">
+                                <div class="iron-nail wet-nail" id="wet-nail">🔩</div>
+                                <div class="water-level">💧 Water</div>
+                            </div>
+                        </div>
+                        <div class="nail-setup">
+                            <h4>Nail in Dry Air</h4>
+                            <div class="dry-container">
+                                <div class="iron-nail dry-nail" id="dry-nail">🔩</div>
+                                <div class="dry-label">🌬️ Dry Air</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time-control">
+                        <label>Time (days): <span id="rust-time">0</span></label>
+                        <input type="range" id="rust-time-slider" min="0" max="30" value="0">
+                    </div>
+                    <div class="rust-comparison" id="rust-comparison">Move time slider to see rusting process!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Compare how iron rusts in water vs. dry air over time!</p>
+                </div>
+            </div>
+
+            <!-- Density Tower -->
+            <div id="density-template">
+                <div class="density-container">
+                    <div class="liquid-bottles">
+                        <div class="liquid-bottle" data-liquid="honey" data-density="1.4">🍯 Honey (1.4 g/mL)</div>
+                        <div class="liquid-bottle" data-liquid="water" data-density="1.0">💧 Water (1.0 g/mL)</div>
+                        <div class="liquid-bottle" data-liquid="oil" data-density="0.9">🫒 Oil (0.9 g/mL)</div>
+                    </div>
+                    <div class="density-tower" id="density-tower">
+                        <div class="tower-container"></div>
+                    </div>
+                    <div class="test-objects">
+                        <div class="density-object" data-object="marble" data-density="2.5">⚫ Marble</div>
+                        <div class="density-object" data-object="grape" data-density="1.1">🍇 Grape</div>
+                        <div class="density-object" data-object="cork" data-density="0.2">🟤 Cork</div>
+                    </div>
+                    <div class="density-info" id="density-info">Pour liquids in order and drop objects to see density in action!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Create a density tower by layering liquids and test where objects float!</p>
+                </div>
+            </div>
+
+            <!-- Seed Growth -->
+            <div id="seed-template">
+                <div class="seed-container">
+                    <div class="growth-controls">
+                        <button class="btn btn--primary" id="add-water">💧 Add Water</button>
+                        <button class="btn btn--primary" id="add-sunlight">☀️ Add Sunlight</button>
+                        <div class="time-control">
+                            <label>Days: <span id="day-count">0</span></label>
+                            <input type="range" id="time-slider" min="0" max="30" value="0">
+                        </div>
+                    </div>
+                    <div class="plant-pot">
+                        <div class="soil"></div>
+                        <div class="plant-stage" id="plant-display">🌰</div>
+                    </div>
+                    <div class="growth-info" id="growth-info">Plant your seed and watch it grow!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Add water and sunlight, then use the time slider to watch your seed grow!</p>
+                </div>
+            </div>
+
+            <!-- Photosynthesis -->
+            <div id="photosynthesis-template">
+                <div class="photosynthesis-container">
+                    <div class="photosynthesis-controls">
+                        <button class="btn btn--primary" id="toggle-sunlight">☀️ Toggle Sunlight</button>
+                        <div class="inputs-display">
+                            <div class="input-arrow co2">CO₂ →</div>
+                            <div class="input-arrow water">H₂O →</div>
+                        </div>
+                    </div>
+                    <div class="leaf-diagram">
+                        <div class="leaf" id="leaf">🍃</div>
+                        <div class="sunlight-beam hidden" id="sunlight-beam">☀️</div>
+                        <div class="oxygen-bubbles" id="oxygen-bubbles"></div>
+                        <div class="glucose-indicator hidden" id="glucose-indicator">🍯 Glucose Produced!</div>
+                    </div>
+                    <div class="photosynthesis-equation">6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂</div>
+                    <div class="photosynthesis-status" id="photosynthesis-status">Turn on sunlight to start photosynthesis!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>See how plants use sunlight, CO₂, and water to make oxygen and glucose!</p>
+                </div>
+            </div>
+
+            <!-- Body Parts Assembly -->
+            <div id="bodyparts-template">
+                <div class="bodyparts-container">
+                    <div class="body-outline" id="body-outline">
+                        <div class="drop-zone head-zone" data-part="brain">🧠</div>
+                        <div class="drop-zone chest-zone" data-part="heart">❤️</div>
+                        <div class="drop-zone lung-zone" data-part="lungs">🫁</div>
+                        <div class="drop-zone stomach-zone" data-part="stomach">🔴</div>
+                        <div class="drop-zone liver-zone" data-part="liver">🟤</div>
+                    </div>
+                    <div class="body-parts-panel">
+                        <h4>Drag Body Parts</h4>
+                        <div class="body-part" data-part="brain">🧠 Brain</div>
+                        <div class="body-part" data-part="heart">❤️ Heart</div>
+                        <div class="body-part" data-part="lungs">🫁 Lungs</div>
+                        <div class="body-part" data-part="stomach">🔴 Stomach</div>
+                        <div class="body-part" data-part="liver">🟤 Liver</div>
+                    </div>
+                    <div class="assembly-progress" id="assembly-progress">0/5 parts placed correctly</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Drag each body part to its correct location in the human body!</p>
+                </div>
+            </div>
+
+            <!-- Digestive System -->
+            <div id="digestion-template">
+                <div class="digestion-container">
+                    <div class="food-selection">
+                        <div class="food-item" data-food="apple">🍎 Apple</div>
+                        <div class="food-item" data-food="bread">🍞 Bread</div>
+                        <div class="food-item" data-food="meat">🥩 Meat</div>
+                    </div>
+                    <div class="digestive-tract">
+                        <div class="mouth">👄</div>
+                        <div class="esophagus"></div>
+                        <div class="stomach" id="stomach">🔴</div>
+                        <div class="small-intestine">🟡</div>
+                        <div class="large-intestine">🟤</div>
+                        <div class="food-particle hidden" id="food-particle">🍎</div>
+                    </div>
+                    <div class="digestion-controls">
+                        <button class="btn btn--primary" id="start-digestion" disabled>Start Digestion Journey</button>
+                        <div class="digestion-stage" id="digestion-stage">Select food to begin!</div>
+                    </div>
+                </div>
+                <div class="experiment-info">
+                    <p>Choose food and watch it travel through the digestive system!</p>
+                </div>
+            </div>
+
+            <!-- Respiration -->
+            <div id="breathing-template">
+                <div class="breathing-container">
+                    <div class="breathing-controls">
+                        <button class="btn btn--primary" id="start-breathing">Start Breathing</button>
+                        <div class="breathing-rate">
+                            <label>Rate: <span id="rate-value">Normal</span></label>
+                            <input type="range" id="rate-slider" min="1" max="3" value="2">
+                        </div>
+                    </div>
+                    <div class="lung-diagram">
+                        <div class="lungs" id="lungs">🫁</div>
+                        <div class="diaphragm" id="diaphragm"></div>
+                        <div class="air-flow in" id="air-in">💨 O₂</div>
+                        <div class="air-flow out hidden" id="air-out">💨 CO₂</div>
+                    </div>
+                    <div class="breathing-cycle" id="breathing-cycle">Press start to see breathing in action!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Watch how your lungs expand and contract during breathing!</p>
+                </div>
+            </div>
+
+            <!-- Floating & Sinking -->
+            <div id="floating-template">
+                <div class="floating-container">
+                    <div class="fruit-selection">
+                        <div class="fruit-item" data-fruit="apple" data-density="0.8">🍎 Apple</div>
+                        <div class="fruit-item" data-fruit="orange" data-density="0.9">🍊 Orange</div>
+                        <div class="fruit-item" data-fruit="grape" data-density="1.1">🍇 Grape</div>
+                        <div class="fruit-item" data-fruit="banana" data-density="0.7">🍌 Banana</div>
+                    </div>
+                    <div class="water-tank" id="water-tank">
+                        <div class="water-surface"></div>
+                        <div class="water-body">💧 Water</div>
+                    </div>
+                    <div class="density-chart">
+                        <h4>Density Comparison</h4>
+                        <div>Water: 1.0 g/mL</div>
+                        <div id="fruit-densities"></div>
+                    </div>
+                    <div class="float-result" id="float-result">Drag fruits to the water to test buoyancy!</div>
+                </div>
+                <div class="experiment-info">
+                    <p>Test which fruits float or sink based on their density compared to water!</p>
+                </div>
+            </div>
+
+            <!-- Butterfly Life Cycle -->
+            <div id="butterfly-template">
+                <div class="butterfly-container">
+                    <div class="lifecycle-controls">
+                        <button class="btn btn--primary" id="play-lifecycle">▶️ Play</button>
+                        <button class="btn btn--secondary" id="pause-lifecycle">⏸️ Pause</button>
+                        <div class="speed-control">
+                            <label>Speed: <span id="speed-value">Normal</span></label>
+                            <input type="range" id="speed-slider" min="1" max="5" value="3">
+                        </div>
+                    </div>
+                    <div class="lifecycle-display">
+                        <div class="stage-container" id="stage-container">
+                            <div class="lifecycle-stage active" data-stage="0">🥚</div>
+                        </div>
+                        <div class="stage-info" id="stage-info">Egg Stage: The beginning of life!</div>
+                    </div>
+                    <div class="stage-timeline">
+                        <div class="timeline-stage active" data-timeline="0">Egg</div>
+                        <div class="timeline-stage" data-timeline="1">Caterpillar</div>
+                        <div class="timeline-stage" data-timeline="2">Chrysalis</div>
+                        <div class="timeline-stage" data-timeline="3">Butterfly</div>
+                    </div>
+                </div>
+                <div class="experiment-info">
+                    <p>Watch the complete metamorphosis from egg to beautiful butterfly!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Script.js"></script>
+</body>
+</html>

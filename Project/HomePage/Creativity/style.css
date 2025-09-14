@@ -1,0 +1,51 @@
+body {
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(135deg,#f9f3ff,#c2e9fb);
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #ff5e99;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px #fff;
+}
+
+.toolbar {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+label, button, select {
+  font-size: 1rem;
+}
+
+button {
+  padding: 6px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #ffb3d1;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff5e99;
+  color: #fff;
+}
+
+.canvas-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  border: 3px dashed #999;
+  border-radius: 15px;
+  background: #fff;
+  cursor: crosshair;
+}

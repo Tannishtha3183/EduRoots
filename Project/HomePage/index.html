@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduRoot - FunLearn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e1f5fe, #b3e5fc);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      background: #ffffff;
+      width: 100%;
+      text-align: center;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border-bottom: 4px solid #81d4fa;
+    }
+    header h1 {
+      font-family:'Calisto MT', cursive;
+      font-size: 3rem;
+      color:#0277bd;
+      letter-spacing: 1px;
+    }
+    header p {color:#01579b; font-weight:500; font-size:1.1rem;}
+
+    .main-area {
+      display: grid;
+      grid-template-columns: 1fr minmax(320px, 500px) 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+      width: 95%;
+      max-width: 1200px;
+    }
+
+    .side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .bubble {
+      width: 110px; height: 110px;
+      border-radius: 20px;
+      background: linear-gradient(145deg,#ffffff,#e3f2fd);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      box-shadow:0 6px 12px rgba(0,0,0,0.1);
+      font-size:2rem; color:#0288d1;
+      cursor:pointer;
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .bubble span {font-size:1rem; margin-top:5px; color:#01579b;}
+    .bubble:hover {transform: translateY(-8px) scale(1.05); box-shadow:0 10px 20px rgba(0,0,0,0.15);}
+
+    .center-area {
+      background:#ffffff;
+      padding: 1.5rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      display:flex; flex-direction:column; gap:1.5rem;
+    }
+
+    .quote {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #01579b;
+      background: #e3f2fd;
+      padding: 1rem;
+      border-radius: 10px;
+      line-height: 1.4;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      background: #3caae6;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .logout-btn:hover {background: #01579b;}
+
+    .chest {font-size:3rem; cursor:pointer; animation: bounce 1.5s infinite;}
+    .reward-label {font-weight:600; color:#0277bd; font-size:1.2rem;}
+    #reward-msg {min-height:24px; color:#01579b; font-weight:500;}
+
+    @keyframes bounce {0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+    @media(max-width:768px){
+      .main-area {grid-template-columns: 1fr;}
+      .side-panel {flex-direction: row; flex-wrap: wrap;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="logout-btn" onclick="goTo('../Login.html')">LogOut</button>
+    <h1>🌟 EduRoot 🌟</h1>
+    <p>Making Learning Fun for Kids!</p>
+  </header>
+
+  <div class="main-area">
+    <div class="side-panel">
+      <div class="bubble" onclick="goTo('Classes/index.html')">📚<span>Classes</span></div>
+      <div class="bubble" onclick="goTo('Quiz/index.html')">🧠<span>Quiz</span></div>
+      <div class="bubble" onclick="goTo('Games/index.html')">🎮<span>Games</span></div>
+      <div class="bubble" onclick="goTo('Creativity/index.html')">🎨<span>Drawing Pad</span></div>
+    </div>
+
+    <div class="center-area">
+      <div class="chest" onclick="openChest()">🎁</div>
+      <div class="reward-label">Daily Reward</div>
+      <div id="reward-msg"></div>
+      <div class="quote" id="daily-quote"></div>
+    </div>
+
+    <div class="side-panel">
+      <div class="bubble" onclick="goTo('Profile/index.html')">👤<span>Profile</span></div>
+      <div class="bubble" onclick="goTo('RoadMap/index.html')">🗺️<span>Roadmap</span></div>
+      <div class="bubble" onclick="goTo('Library/index.html')">📖<span>Library</span></div>
+      <div class="bubble" onclick="goTo('Lab/index.html')">🔬<span>Science Lab</span></div>
+    </div>
+  </div>
+
+  <canvas id="confetti"></canvas>
+
+  <script>
+    function goTo(page){window.location.href=page;}
+    function openChest(){showConfetti();document.getElementById('reward-msg').textContent="You got 2 ⭐ hints today!";setTimeout(()=>{document.getElementById('reward-msg').textContent="";},3000);}
+    function showConfetti(){const canvas=document.getElementById('confetti');const ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;let pieces=new Array(100).fill().map(()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,size:5+Math.random()*5,color:`hsl(${Math.random()*360},100%,70%)`,speed:2+Math.random()*3}));let startTime=Date.now();function update(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.y+=p.speed;if(p.y>canvas.height)p.y=-10;ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,p.size,p.size);});if(Date.now()-startTime<4000){requestAnimationFrame(update);}else{ctx.clearRect(0,0,canvas.width,canvas.height);}}update();}
+
+    const quotes = [
+      "Believe in yourself – you are capable of amazing things!",
+      "Small steps every day lead to big results.",
+      "Your future is created by what you do today, not tomorrow.",
+      "Mistakes are just proof that you are learning.",
+      "Dream big, work hard, and stay kind."
+    ];
+    document.getElementById('daily-quote').textContent = quotes[Math.floor(Math.random()*quotes.length)];
+  </script>
+</body>
+</html>
